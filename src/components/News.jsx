@@ -2,9 +2,12 @@ import { useEffect, useState } from "react";
 import { nanoid } from "nanoid";
 import "./news.css";
 
-export default function News() {
+export default function News({ getSearch, resetQuery }) {
   const [news, setNews] = useState([]);
   const [category, setCategories] = useState("general");
+
+  console.log(getSearch);
+
   const categories = [
     "general",
     "world",
@@ -15,9 +18,13 @@ export default function News() {
   ];
 
   useEffect(() => {
-    fetch(
-      `https://gnews.io/api/v4/top-headlines?category=${category}&lang=en&apikey=f6392cbd575bee8d4ac0f3ee93d9f301`
-    )
+    let url = `https://gnews.io/api/v4/top-headlines?category=${category}&lang=en&apikey=f6392cbd575bee8d4ac0f3ee93d9f301`;
+
+    if (getSearch) {
+      url = `https://gnews.io/api/v4/search?q=${getSearch}&apikey=f6392cbd575bee8d4ac0f3ee93d9f301`;
+    }
+
+    fetch(url)
       .then((res) => res.json()) // Return the promise from res.json()
       .then((data) =>
         setNews(() => {
@@ -37,10 +44,13 @@ export default function News() {
           ];
         })
       );
-  }, [category]);
+  }, [category, getSearch]);
 
   function handleCategories(category) {
     setCategories(category);
+    if (getSearch) {
+      resetQuery(); // Reset the search query in the parent component
+    }
   }
 
   const outputNews = news.map((currArticle) => {
@@ -54,7 +64,7 @@ export default function News() {
     });
   });
 
-  console.log(news);
+  console.log(getSearch);
   return (
     <>
       <div className="news-content">

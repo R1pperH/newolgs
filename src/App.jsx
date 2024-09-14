@@ -3,11 +3,32 @@ import News from "./components/News";
 import Blogs from "./components/Blogs";
 import Nav from "./components/Nav";
 function App() {
+  const [search, setSearch] = useState("");
+  const [query, setQuery] = useState("");
+
+  function getSearchResult(e) {
+    e.preventDefault();
+    setQuery(search);
+    setSearch("");
+  }
+
+  function getQuery(e) {
+    setSearch(e.target.value);
+  }
+
+  function resetQuery() {
+    setQuery("");
+  }
+
   return (
     <>
-      <Nav />
+      <Nav
+        handleSubmit={getSearchResult}
+        getSearch={getQuery}
+        queryValue={search}
+      />
       <div className="app-content">
-        <News />
+        <News getSearch={query} resetQuery={resetQuery} />
         <Blogs />
       </div>
     </>
