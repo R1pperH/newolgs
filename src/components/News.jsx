@@ -4,10 +4,19 @@ import "./news.css";
 
 export default function News() {
   const [news, setNews] = useState([]);
+  const [category, setCategories] = useState("general");
+  const categories = [
+    "general",
+    "world",
+    "technology",
+    "science",
+    "history",
+    "sports",
+  ];
 
   useEffect(() => {
     fetch(
-      `https://gnews.io/api/v4/top-headlines?category=general&lang=en&apikey=f6392cbd575bee8d4ac0f3ee93d9f301`
+      `https://gnews.io/api/v4/top-headlines?category=${category}&lang=en&apikey=f6392cbd575bee8d4ac0f3ee93d9f301`
     )
       .then((res) => res.json()) // Return the promise from res.json()
       .then((data) =>
@@ -28,7 +37,11 @@ export default function News() {
           ];
         })
       );
-  }, []);
+  }, [category]);
+
+  function handleCategories(category) {
+    setCategories(category);
+  }
 
   const outputNews = news.map((currArticle) => {
     return currArticle.rest.map((news) => {
@@ -45,7 +58,20 @@ export default function News() {
   return (
     <>
       <div className="news-content">
-        <div className="news-category">Category</div>
+        <div className="news-category">
+          {categories.map((currCategory) => {
+            return (
+              <h3
+                key={currCategory}
+                className="categories"
+                onClick={() => handleCategories(currCategory)}
+              >
+                {currCategory}
+              </h3>
+            );
+          })}
+          <h3 className="categories">Bookmark</h3>
+        </div>
         <div className="news">
           <div className="news-main">
             {news.map((currArticle) => {
