@@ -1,0 +1,35 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  line-height: 1.5;
+}
+
+body {
+  background: linear-gradient(to right, #f2994a, #f2c94c);
+  background-repeat: no-repeat;
+  height: 100vh;
+  width: 100%;
+}
+
+#root {
+  width: 95%;
+  height: 95%;
+  margin: 2rem auto;
+  background-color: #333333;
+  border-radius: 20px;
+  box-shadow: 2rem 2rem 4rem rgba(0, 0, 0, 0.5);
+}
+
+.app-content {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.news-main {
+  grid-column: 1 / -1;
+}

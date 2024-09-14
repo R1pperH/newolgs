@@ -1,0 +1,10 @@
+.news-content {
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+}
+
+.news {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
