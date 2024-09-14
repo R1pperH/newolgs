@@ -19,7 +19,7 @@ export default function News() {
                 ...data.articles[0],
               },
               rest: [
-                ...data.articles.splice(1, 6).map((article) => ({
+                ...data.articles.slice(1, 7).map((article) => ({
                   id: nanoid(),
                   ...article,
                 })),
@@ -33,14 +33,15 @@ export default function News() {
   const outputNews = news.map((currArticle) => {
     return currArticle.rest.map((news) => {
       return (
-        <div key={news.id}>
+        <div key={news.id} className="rest-news-content">
+          <img src={news.image} alt={news.title} className="rest-img" />
           <h3>{news.title}</h3>
         </div>
       );
     });
   });
 
-  // console.log(outputNews);
+  console.log(news);
   return (
     <>
       <div className="news-content">
@@ -50,12 +51,16 @@ export default function News() {
             {news.map((currArticle) => {
               return (
                 <div key={currArticle.main.id}>
+                  <img
+                    src={currArticle.main.image}
+                    alt={currArticle.main.title}
+                    className="main-img"
+                  />
                   <h3>{currArticle.main.title}</h3>
                 </div>
               );
             })}
           </div>
-
           {outputNews}
         </div>
       </div>
