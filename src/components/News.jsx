@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { nanoid } from "nanoid";
 import "./news.css";
+import NewsModal from "./NewsModal";
 
 export default function News({ getSearch, resetQuery }) {
   const [news, setNews] = useState([]);
@@ -60,7 +61,7 @@ export default function News({ getSearch, resetQuery }) {
         <div
           key={news.id}
           className="rest-news-content"
-          onClick={() => handleModal(news.id)}
+          onClick={() => handleModal(news)}
         >
           <img src={news.image} alt={news.title} className="rest-img" />
           <h3>{news.title}</h3>
@@ -69,10 +70,14 @@ export default function News({ getSearch, resetQuery }) {
     });
   });
 
-  function handleModal(id) {
-    setModal(id);
+  function handleModal(news) {
+    const modalNews = news;
+    // console.log(modalNews);
+    setModal(modalNews);
   }
-  console.log(modal);
+
+  // console.log(modal);
+
   return (
     <>
       <div className="news-content">
@@ -97,7 +102,7 @@ export default function News({ getSearch, resetQuery }) {
                 <div
                   key={currArticle.main.id}
                   className="main-news-container"
-                  onClick={() => handleModal(currArticle.main.id)}
+                  onClick={() => handleModal(currArticle.main)}
                 >
                   <img
                     src={currArticle.main.image}
@@ -111,6 +116,7 @@ export default function News({ getSearch, resetQuery }) {
           </div>
           {outputNews}
         </div>
+        <NewsModal setModal={modal} />
       </div>
     </>
   );
