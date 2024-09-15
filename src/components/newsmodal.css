@@ -7,10 +7,17 @@
   align-items: center;
   justify-content: center;
   /* background-color: #bbb; */
+
+  top: 0;
 }
 
 .modal-img {
-  width: 50%;
-  aspect-ratio: 1;
+  width: 30%;
+  /* aspect-ratio: 1; */
   object-fit: cover;
+  word-wrap: break-word;
+}
+
+.modal p {
+  width: 30%;
 }

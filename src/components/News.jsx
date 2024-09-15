@@ -24,7 +24,7 @@ export default function News({ getSearch, resetQuery }) {
     let url = `https://gnews.io/api/v4/top-headlines?category=${category}&lang=en&apikey=f6392cbd575bee8d4ac0f3ee93d9f301`;
 
     if (getSearch) {
-      url = `https://gnews.io/api/v4/search?q=${getSearch}&apikey=f6392cbd575bee8d4ac0f3ee93d9f301`;
+      url = `https://gnews.io/api/v4/search?q=${getSearch}&lang=en&&apikey=f6392cbd575bee8d4ac0f3ee93d9f301`;
     }
 
     fetch(url)
