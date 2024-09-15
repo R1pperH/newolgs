@@ -1,3 +1,7 @@
 export default function Blogs() {
-  return <>Blogs</>;
+  return (
+    <>
+      <button>Create New Post</button>
+    </>
+  );
 }
