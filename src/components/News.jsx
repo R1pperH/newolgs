@@ -86,7 +86,7 @@ export default function News({ getSearch, resetQuery }) {
           <div className="news-main">
             {news.map((currArticle) => {
               return (
-                <div key={currArticle.main.id}>
+                <div key={currArticle.main.id} className="main-news-container">
                   <img
                     src={currArticle.main.image}
                     alt={currArticle.main.title}
