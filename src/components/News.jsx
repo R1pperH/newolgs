@@ -78,6 +78,10 @@ export default function News({ getSearch, resetQuery }) {
     setShowModal(true);
   }
 
+  function handleShowModel() {
+    setShowModal(false);
+  }
+
   // console.log(modal);
 
   return (
@@ -119,7 +123,7 @@ export default function News({ getSearch, resetQuery }) {
           {outputNews}
         </div>
       </div>
-      {showModal && <NewsModal setModal={modal} />}
+      {showModal && <NewsModal setModal={modal} showModal={handleShowModel} />}
     </>
   );
 }
