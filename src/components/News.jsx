@@ -118,8 +118,8 @@ export default function News({ getSearch, resetQuery }) {
           </div>
           {outputNews}
         </div>
-        {showModal && <NewsModal setModal={modal} />}
       </div>
+      {showModal && <NewsModal setModal={modal} />}
     </>
   );
 }

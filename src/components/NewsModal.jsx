@@ -7,10 +7,15 @@ export default function NewsModal({ setModal, display }) {
   return (
     <>
       <div className="modal">
-        <img src={setModal.image} alt="" className="modal-img" />
-        <h3>{setModal.title}</h3>
-        <p>{setModal.content}</p>
-        <i className="fa-solid fa-circle-xmark"></i>
+        <div className="modal-img-container">
+          <img src={setModal.image} alt="" className="modal-img" />
+        </div>
+
+        <div className="modal-txt-container">
+          <h3>{setModal.title}</h3>
+          <p>{setModal.content}</p>
+        </div>
+        <i className="fa-solid fa-circle-xmark marking"></i>
       </div>
     </>
   );
