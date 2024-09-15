@@ -5,6 +5,7 @@ import "./news.css";
 export default function News({ getSearch, resetQuery }) {
   const [news, setNews] = useState([]);
   const [category, setCategories] = useState("general");
+  const [modal, setModal] = useState([]);
 
   console.log(getSearch);
 
@@ -56,7 +57,11 @@ export default function News({ getSearch, resetQuery }) {
   const outputNews = news.map((currArticle) => {
     return currArticle.rest.map((news) => {
       return (
-        <div key={news.id} className="rest-news-content">
+        <div
+          key={news.id}
+          className="rest-news-content"
+          onClick={() => handleModal(news.id)}
+        >
           <img src={news.image} alt={news.title} className="rest-img" />
           <h3>{news.title}</h3>
         </div>
@@ -64,7 +69,10 @@ export default function News({ getSearch, resetQuery }) {
     });
   });
 
-  console.log(getSearch);
+  function handleModal(id) {
+    setModal(id);
+  }
+  console.log(modal);
   return (
     <>
       <div className="news-content">
@@ -86,7 +94,11 @@ export default function News({ getSearch, resetQuery }) {
           <div className="news-main">
             {news.map((currArticle) => {
               return (
-                <div key={currArticle.main.id} className="main-news-container">
+                <div
+                  key={currArticle.main.id}
+                  className="main-news-container"
+                  onClick={() => handleModal(currArticle.main.id)}
+                >
                   <img
                     src={currArticle.main.image}
                     alt={currArticle.main.title}
