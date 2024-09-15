@@ -7,6 +7,7 @@ export default function News({ getSearch, resetQuery }) {
   const [news, setNews] = useState([]);
   const [category, setCategories] = useState("general");
   const [modal, setModal] = useState([]);
+  const [showModal, setShowModal] = useState(false);
 
   console.log(getSearch);
 
@@ -74,6 +75,7 @@ export default function News({ getSearch, resetQuery }) {
     const modalNews = news;
     // console.log(modalNews);
     setModal(modalNews);
+    setShowModal(true);
   }
 
   // console.log(modal);
@@ -116,7 +118,7 @@ export default function News({ getSearch, resetQuery }) {
           </div>
           {outputNews}
         </div>
-        <NewsModal setModal={modal} />
+        {showModal && <NewsModal setModal={modal} />}
       </div>
     </>
   );
