@@ -27,6 +27,24 @@
 
 .blog-post {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+  width: 20%;
+}
+
+.close-button {
+  position: absolute;
+  top: 2rem;
+  right: 3rem;
+  font-size: 3rem;
+  cursor: pointer;
+}
+
+.blog-img-container {
+  width: 100%;
+}
+
+.blog-img {
+  width: 100%;
 }
