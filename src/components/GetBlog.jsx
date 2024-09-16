@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "./getblog.css";
 
 export default function GetBlog() {
   const [data, setData] = useState({ title: "", post: "" });
@@ -18,6 +19,8 @@ export default function GetBlog() {
           value={data.post}
           placeholder="Type Your Thoughts"
         ></textarea>
+
+        <button>Submit Post</button>
       </form>
     </>
   );

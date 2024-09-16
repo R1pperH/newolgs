@@ -1,16 +1,15 @@
 import { useState } from "react";
 import GetBlog from "./GetBlog";
+import "./getblog.css";
 
-export default function Blogs() {
-  const [blogModal, setBlogModal] = useState(false);
-
-  function handleBlog() {
-    setBlogModal(true);
-  }
+export default function Blogs({ handleBlog }) {
   return (
     <>
-      <button onClick={handleBlog}>Create New Post</button>
-      {blogModal && <GetBlog />}
+      <div className="blog-post">
+        <button className="create-button" onClick={handleBlog}>
+          Create New Post
+        </button>
+      </div>
     </>
   );
 }
