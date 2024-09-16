@@ -8,6 +8,8 @@ export default function Blogs({ handleBlog, blogs }) {
     return (
       <div className="blog-img-container" key={currBlog.id}>
         <img src={currBlog.image} alt={currBlog.title} className="blog-img" />
+        <h3>{currBlog.title}</h3>
+        <p>{currBlog.post}</p>
       </div>
     );
   });
